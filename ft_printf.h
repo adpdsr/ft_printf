@@ -10,7 +10,14 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-typedef struct		s_all
+#define CHAR 1
+#define LONG_LONG_INT 2
+#define SHORT_INT 3
+#define LONG_INT 4
+#define INTMAXT 5
+#define SIZET 6
+
+typedef struct				s_all
 {
 	int				prefix;
 	int				zero_pad;
@@ -18,9 +25,12 @@ typedef struct		s_all
 	int				blank_sign;
 	int				always_sign;
 	
-	unsigned int	width;
+	int				width;
 	int				precision;
+	int				length;
 
 }					t_all;
+
+int	ft_printf(const char *format, ...);
 
 #endif
