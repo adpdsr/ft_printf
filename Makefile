@@ -47,10 +47,10 @@ $(OBJS): $(SRCS)
 	mv $(OBJ) $(DIR_OBJ)
 
 clean:
-	$(RM) $(OBJS)
+	rm -rf $(OBJS) $(DIR_OBJ)
 
 fclean: clean
-	$(RM) $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 

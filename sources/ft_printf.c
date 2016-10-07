@@ -9,7 +9,7 @@
 
 #include "../includes/ft_printf.h"
 
-static void	ftp_putchar(t_all *all, char c)
+void	ftp_putchar(t_all *all, char c)
 {
 	write (1, &c, 1);
 	all->cnt++;
@@ -249,29 +249,111 @@ void	printo(va_list arg, t_all *all, char c)
 			print_pad_right(all, len);
 }
 
+static void	ftp_putnchar(t_all *all, int len, char c)
+{
+	int i;
+
+	i = 0;
+	while (i < len)
+	{
+		ft_putchar(c);
+		all->cnt++;
+		i++;
+	}
+}
+
+
+
+static void	pad_precision(t_all *all, int len)
+{
+	if (all->precision > len)
+		ftp_putnchar(all, all->precision - len, '0');
+}
+
+static void	pad_with(t_all *all, char *prefix, int len, char c)
+{
+	all->width -= ft_strlen(prefix);
+	if (all->precision > len)
+		all->width -= all->precision;
+	else
+		all->width -= len;
+	ftp_putnchar(all, all->width, c);
+}
+
+static void	put_prefix(t_all *all, char *prefix, int len, int conv)
+{
+	if (!all->right_pad)
+	{
+		if (all->zero_pad && !all->precision)
+		{
+		//	printf("test1");
+			ftp_putstr(all, prefix);
+			pad_with(all, prefix, len, '0');
+		}
+		else
+		{
+			pad_with(all, prefix, len, ' ');
+			if (!conv)
+			{
+		//		printf("test2");
+				if (!all->precision)
+					ftp_putstr(all, prefix);
+			}
+			else
+			{
+		//		printf("test3");
+				ftp_putstr(all, prefix);
+			}
+		}
+	}
+	pad_precision(all, len);
+}
+
+static void	put_suffix(t_all *all, int width, int len)
+{
+	if (width > len)
+	{
+		while ((width - len) > 0)
+		{
+			ftp_putchar(all, ' ');
+			len++;
+		}
+	}
+}
+
+static char *get_x_prefix(t_all *all, int maj)
+{
+	if (all->prefix)
+	{
+		if (maj == 0)
+			return ("0x");
+		else if (maj == 1)
+			return ("0X");
+	}
+	return ("");
+}
+
 void	printx(va_list arg, t_all *all, char c)
 {
 		uintmax_t	nbr;
 		int			len;
 		int 		maj;
-		int			pad;
 		char		*prefix;
 
 		// pas de flag +
 		// 0 ignoré si - ou si precision
 
-		len = 0;
-		pad = 0;
 		maj = ((c == 'x') ? 0 : 1);
 		nbr = cast_unsigned_int(arg, all);
-		prefix = get_prefix(all, maj, "0x", "0X");
-		len = ftp_nbrlen(nbr, HEX_L) + ft_strlen(prefix);
-		pad = pad_left(all, len);
-		ft_putstr(prefix);
-		ft_putnnbr_base(nbr, len, 16, maj);
+		len = ftp_nbrlen(nbr, "0123456789ABCDEF");
+		prefix = get_x_prefix(all, maj);
+		if (nbr > 0)
+			put_prefix(all, prefix, len, 1);
+		if ((all->precised && all->precision) || !all->precised)
+			ft_putnnbr_base(nbr, len, 16, maj);
+		if (all->right_pad)
+			put_suffix(all, all->width, len);
 		all->cnt += len;
-		if (!pad)
-			print_pad_right(all, len);
 }
 
 void	printu(va_list arg, t_all *all, char c)
