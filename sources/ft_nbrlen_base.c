@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_precision.c                                    :+:      :+:    :+:   */
+/*   ft_nbrlen_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/10 14:53:54 by adu-pelo          #+#    #+#             */
-/*   Updated: 2016/10/10 14:54:41 by adu-pelo         ###   ########.fr       */
+/*   Created: 2016/10/10 16:30:30 by adu-pelo          #+#    #+#             */
+/*   Updated: 2016/10/11 21:14:46 by adu-pelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-char	*get_precision(char **format, t_all *all)
+int		ft_nbrlen_base(uintmax_t n, char *base)
 {
-	if (**format == '.')
+	int		i;
+	size_t	b;
+
+	i = 0;
+	b = ft_strlen(base);
+	if (n == 0)
+		return (1);
+	while (n)
 	{
-		(*format)++;
-		all->precised = 1;
-		while (ft_isdigit(**format))
-		{
-			all->precision = all->precision * 10 + ((**format) - '0');
-			(*format)++;
-		}
+		n = n / b;
+		i++;
 	}
-	else
-		all->precised = 0;
-	return (*format);
+	return (i);
 }
