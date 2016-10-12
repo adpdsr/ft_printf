@@ -23,7 +23,7 @@ int			main(void)
 	ptr = NULL;
 	ptr2 = "qszdaze";
 	ptr3 = 0;
-/*
+
 	printf("--- RET ----------------------------------\n\n");
 
 	printf("printf    : [%d]\n", printf("%-10.2s %10d %% = ", "salut", 12));
@@ -36,7 +36,6 @@ int			main(void)
 	ft_printf("ft_printf : [%d]\n", ft_printf("%-10.2u %10s %d = ", 321321, "salut", 12));
 	ft_printf("\n");
 
-
 	printf("--- INT ----------------------------------\n\n");
 
 	printf("printf    : %#x\n", 0);
@@ -47,10 +46,10 @@ int			main(void)
 	
 	printf("printf    : [%ld %li]\n", 12345613246, -789101112987654);
 	ft_printf("ft_printf : [%ld %li]\n\n", 12345613246, -789101112987654);
-*/	
+	
 	printf("printf    : [%+08d|%+i|%25.10ld]\n", -13200, 12, -20202020202020);
 	ft_printf("ft_printf : [%+08d|%+i|%25.10ld]\n\n", -13200, 12, -20202020202020);
-/*	
+	
 	printf("printf    : [%-25d %+i %-25.10ld]\n", -13200, 12, -20202020202020);
 	ft_printf("ft_printf : [%-25d %+i %-25.10ld]\n\n", -13200, 12, -20202020202020);
 
@@ -113,7 +112,6 @@ int			main(void)
 	ret = ft_printf("ft_printf    : [%-4c %2lc %-1lc]\n", '@', '@', '^');
 	printf("ret = [%d]\n\n", ret);
 
-
 	printf("--- HEXA ---------------------------------\n\n");
 
 	printf("printf    : [%-20x %#020X]\n", 123456789, -321654987);
@@ -142,7 +140,6 @@ int			main(void)
 	ret = ft_printf("ft_printf : [%.2o|%20.4lo|%.1lo]\n", 321654, 135448367321, 20202020202020);
 	printf("ret = [%d]\n\n", ret);
 
-
 	printf("--- UNSIGNED -----------------------------\n\n");
 	
 	ret = printf("printf    : [%0u %40u]\n", 123456789, 987654321);
@@ -169,6 +166,12 @@ int			main(void)
 	printf("ret = [%d]\n", ret);
 	ret = ft_printf("ft_printf : [%p %p %p]\n", ptr, ptr3, ptr2);
 	printf("ret = [%d]\n\n", ret);
-*/	
+
+	ft_printf("@moulitest: %#.x|%#.0x\n", 0, 0);
+	printf("@moulitest: %#.x|%#.0x\n", 0, 0);
+
+	ft_printf("@moulitest: %5.x|%5.0x\n", 0, 0);
+	printf("@moulitest: %5.x|%5.0x\n", 0, 0);
+	
 	return (0);
 }

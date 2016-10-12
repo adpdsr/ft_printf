@@ -4,18 +4,22 @@
 
 NAME	= libftprintf.a
 
-
 SRC	= ft_bzero.c \
 	  ft_isdigit.c \
 	  ft_memalloc.c \
 	  ft_memset.c \
+	  ft_printc.c \
 	  ft_printf.c \
+	  ft_printwc.c \
 	  ft_putchar.c \
-	  ft_putnnbr_base.c \
 	  ft_putnnbr.c \
+	  ft_nbrlen_base.c \
+	  ft_putnnbr_base.c \
 	  ft_putstr.c \
 	  ft_strlen.c \
 	  ft_strnstr.c \
+	  ftp_prints.c \
+	  ftp_printx.c \
 	  get_flag.c \
 	  get_length.c \
 	  get_precision.c \

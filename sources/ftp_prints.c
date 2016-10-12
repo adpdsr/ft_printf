@@ -94,14 +94,14 @@ void		prints(va_list arg, t_all *all, char c)
 
 void		printc(va_list arg, t_all *all, char c)
 {
-	int		len;
 	char	s;
 
 	if (all->length == LONG_INT)
 		return (printwc(arg, all, c));
-	s = va_arg(arg, int);
-	if (c == '%')
-		return (ftp_putchar(all, '%')); // refaire tests
+	s = ((c == '%') ? '%' : va_arg(arg, int));
+	//s = va_arg(arg, int);
+	//if (c == '%')
+	//	return (ftp_putchar(all, '%')); // refaire tests
 	if (!all->right_pad && all->widthed && (all->width > 1)) // si pas de padding a droite et que width va modifier le champ
 		pad_width(all, 1, (all->zero_pad) ? '0' : ' ');
 	ftp_putchar(all, s);
