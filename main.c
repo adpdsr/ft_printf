@@ -173,5 +173,16 @@ int			main(void)
 	ft_printf("@moulitest: %5.x|%5.0x\n", 0, 0);
 	printf("@moulitest: %5.x|%5.0x\n", 0, 0);
 	
+
+	ft_printf("ft1 : [%-#6o]\n", 2500);
+	printf("ft2 : [%-#6o]\n", 2500);
+	ft_printf("ft1 : [%5.o|%5.0o]\n", 0, 0);
+	printf("ft2 : [%5.o|%5.0o]\n", 0, 0);
+	ft_printf("ft1 : [%-+10.5d]\n", 4242);
+	printf("ft2 : [%-+10.5d]\n", 4242);
+	ft_printf("ft1 : [%.d|%.0d]\n", 42, 43);
+	printf("ft2 : [%.d|%.0d]\n", 42, 43);
+	ft_printf("ft1 : [%5.d|%5.0d]\n", 0, 0);
+	printf("ft2 : [%5.d|%5.0d]\n", 0, 0);
 	return (0);
 }

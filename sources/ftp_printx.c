@@ -50,12 +50,13 @@ static void	pad_precision(t_all *all, unsigned int len)
 
 static void	put_prefix(t_all *all, char *prefix, int len, int conv)
 {
+			//	ft_putstr("|t0|");
 		if (!all->right_pad)
 		{
-		//		ft_putstr("|t1|");
+			//	ft_putstr("|t1|");
 				if (all->zero_pad && !all->precision)
 				{
-		//		ft_putstr("|t2|");
+			//	ft_putstr("|t2|");
 						ftp_putstr(all, prefix);
 						pad_width2(all, prefix, len, '0');
 				}
@@ -76,10 +77,12 @@ static void	put_prefix(t_all *all, char *prefix, int len, int conv)
 								ftp_putstr(all, prefix);
 						}
 				}
+				//else if (all->prefix) /* NEW */
+				//	ftp_putstr(all, prefix);
 		}
-		else if (all->prefix) // test
+		else if (all->prefix || all->always_sign) // test
 		{
-		//		ft_putstr("|t6|");
+			//	ft_putstr("|t6|");
 				ftp_putstr(all, prefix);
 		}
 		//ft_putstr("|t7|");
@@ -95,7 +98,7 @@ void		printx(va_list arg, t_all *all, char c)
 		maj = (c == 'x') ? 0 : 1;
 		nbr = cast_unsigned_int(arg, all);
 		len = ft_nbrlen_base(nbr, "0123456789abcdef");
-		if (all->widthed) // && nbr != 0)
+		if (nbr != 0 || all->widthed) // && nbr != 0)
 		{
 				/* 	fix wrong padding when 0 with precision 0	*/
 				if (nbr == 0 && all->precised && !all->precision)
@@ -119,6 +122,10 @@ void		printo(va_list arg, t_all *all, char c)
 
 		nbr = cast_unsigned_int(arg, all);
 		len = ft_nbrlen_base(nbr, "01234567");
+		if (!nbr && all->precised && !all->precision) /* NEW */
+			len = 0;
+		if (all->prefix) /* NEW */
+			len += 1;
 		put_prefix(all, get_prefix(all, c), len, 0);
 		if ((!nbr && all->precised && !all->precision) || (!nbr && all->prefix))
 				(void)nbr;
@@ -189,7 +196,6 @@ void	printi(va_list arg, t_all *all, char c)
 
 		(void)c;
 		nbr = cast_signed_int(arg, all);
-		//printf("nbr = [%jd]\n", nbr);
 		prefix = get_signed_prefix(all, nbr);
 		//printf("prefix = [%s]\n", prefix);
 		//	ft_putstr("|");
@@ -201,10 +207,12 @@ void	printi(va_list arg, t_all *all, char c)
 				all->prefix = 1;
 		}
 		len = ft_nbrlen_base(nbr, "0123456789");
+		if (!nbr && all->precised && !all->precision) /* NEW */
+			len -= 1;
 		//printf("nbr = [%jd]\n", nbr);
 		//printf("len = [%zu]\n", len);
 		put_prefix(all, prefix, len, 1);	
-		if ((all->precised && all->precision) || (!all->precised))
+		if (nbr || (all->precised && all->precision) || (!all->precised)) /* NEW */
 		{
 				ft_putnnbr_base(nbr, len, 10, 0);
 				all->cnt += len;
