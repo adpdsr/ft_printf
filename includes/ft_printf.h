@@ -29,20 +29,20 @@
 
 typedef struct	s_all
 {
-	int	prefix;
-	int	zero_pad;
-	int	right_pad;
-	int	blank_sign;
-	int	always_sign;
+	unsigned int	prefix;		// bool
+	unsigned int	zero_pad;	// bool
+	unsigned int	right_pad;	// bool
+	unsigned int	blank_sign;	// bool
+	unsigned int	always_sign;	// bool
 
-	int	width;
-	int	widthed;
+	unsigned int	width;
+	unsigned int	widthed;	// bool
 
-	int	precision;
-	int	precised;
+	unsigned int	precision;
+	unsigned int	precised;	// bool
 
-	int	length;
-	int	cnt;
+	unsigned int	length;
+	unsigned int	cnt;
 
 }		t_all;
 
@@ -66,7 +66,7 @@ void	ft_putnnbr(uintmax_t, int len);
 void	ft_putnnbr_base(uintmax_t n, int len, unsigned int base, int flag);
 
 /* padding.c */
-void    pad_width(t_all *all, int len, char c);
+void    pad_width(t_all *all, unsigned int len, char c);
 
 /* libft */
 void	ft_bzero(void *str, size_t n);

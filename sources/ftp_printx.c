@@ -32,7 +32,7 @@ static void	ftp_putnchar(t_all *all, char c, int n)
 				ftp_putchar(all, c);
 }
 
-static void	pad_width2(t_all *all, char *prefix, int len, char c)
+static void	pad_width2(t_all *all, char *prefix, unsigned int len, char c)
 {
 		all->width -= ft_strlen(prefix);
 		if (all->precision > len)
@@ -42,7 +42,7 @@ static void	pad_width2(t_all *all, char *prefix, int len, char c)
 		ftp_putnchar(all, c, all->width);
 }
 
-static void	pad_precision(t_all *all, int len)
+static void	pad_precision(t_all *all, unsigned int len)
 {
 		if (all->precision > len)
 				ftp_putnchar(all, '0', all->precision - len);
@@ -61,8 +61,9 @@ static void	put_prefix(t_all *all, char *prefix, int len, int conv)
 				}
 				else
 				{
-		//		ft_putstr("|t3|");
+			//	ft_putstr("|t3|");
 						pad_width2(all, prefix, len, ' ');
+			//	ft_putstr("|t3|");
 						if (!conv)
 						{
 		//		ft_putstr("|t4|");
@@ -87,15 +88,19 @@ static void	put_prefix(t_all *all, char *prefix, int len, int conv)
 
 void		printx(va_list arg, t_all *all, char c)
 {
-		int			maj;
-		int			len;
-		uintmax_t	nbr;
+		size_t			len;
+		uintmax_t		nbr;
+		unsigned int	maj;
 
 		maj = (c == 'x') ? 0 : 1;
 		nbr = cast_unsigned_int(arg, all);
 		len = ft_nbrlen_base(nbr, "0123456789abcdef");
-		if (nbr > 0 || all->widthed) // test
+		if (all->widthed) // && nbr != 0)
 		{
+				/* 	fix wrong padding when 0 with precision 0	*/
+				if (nbr == 0 && all->precised && !all->precision)
+					len -= 1;
+				/*												*/
 				put_prefix(all, get_prefix(all, c), len, 1);
 		}
 		if ((all->precised && all->precision) || (!all->precised))
@@ -109,7 +114,7 @@ void		printx(va_list arg, t_all *all, char c)
 
 void		printo(va_list arg, t_all *all, char c)
 {
-		int			len;
+		size_t		len;
 		uintmax_t	nbr;
 
 		nbr = cast_unsigned_int(arg, all);
@@ -128,11 +133,11 @@ void		printo(va_list arg, t_all *all, char c)
 
 void	printu(va_list arg, t_all *all, char c)
 {
-		int			len;
+		size_t		len;
 		uintmax_t	nbr;
 
-		if (c == 'U') // test
-			all->length = LONG_INT; // test
+		if (c == 'U')
+			all->length = LONG_INT;
 		nbr = cast_unsigned_int(arg, all);
 		len = ft_nbrlen_base(nbr, "0123456789");
 		put_prefix(all, "", len, 1);
@@ -147,7 +152,7 @@ void	printu(va_list arg, t_all *all, char c)
 
 void	printp(va_list arg, t_all *all, char c)
 {
-		int			len;
+		size_t			len;
 		intmax_t	nbr;
 
 		(void)c;

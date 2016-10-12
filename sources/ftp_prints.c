@@ -12,9 +12,9 @@
 
 #include "../includes/ft_printf.h"
 
-static int	ft_nstrlen(char *s, int n)
+static size_t	ft_nstrlen(char *s, unsigned int n)
 {
-	int i;
+	size_t i;
 
 	i = 0;
 	while (*s && i < n)
@@ -25,7 +25,7 @@ static int	ft_nstrlen(char *s, int n)
 	return (i);
 }
 
-void	pad_width(t_all *all, int len, char c)
+void	pad_width(t_all *all, unsigned int len, char c)
 {
 	while (len < all->width)
 	{
@@ -77,7 +77,7 @@ static int  ft_nwstrlen(wchar_t *str, int len)
 
 void		prints(va_list arg, t_all *all, char c)
 {
-	int		len;
+	size_t		len;
 	char	*s;
 
 	if (all->length == LONG_INT)
@@ -111,7 +111,7 @@ void		printc(va_list arg, t_all *all, char c)
 
 void		printwc(va_list arg, t_all *all, char c)
 {
-	int		len;
+	size_t		len;
 	wchar_t	s;
 
 	(void)c;
@@ -126,7 +126,7 @@ void		printwc(va_list arg, t_all *all, char c)
 
 void    printws(va_list arg, t_all *all, char c)
 {
-	int     len;
+	size_t     len;
 	wchar_t *s;
 
 	(void)c;
