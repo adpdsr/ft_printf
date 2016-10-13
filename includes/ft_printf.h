@@ -6,7 +6,7 @@
 /*   By: adu-pelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 14:51:55 by adu-pelo          #+#    #+#             */
-/*   Updated: 2016/10/11 21:15:01 by adu-pelo         ###   ########.fr       */
+/*   Updated: 2016/10/13 16:31:35 by adu-pelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int		ft_isdigit(int c);
 void	*ft_memalloc(size_t size);
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_putchar(char c);
+char	*ft_strchr(const char *str, int c);
 void	ft_putstr(char const *s);
 size_t	ft_strlen(char const *str);
 char	*ft_strnstr(const char *s1, const char *s2, size_t n);
@@ -85,6 +86,7 @@ uintmax_t cast_unsigned_int(va_list arg, t_all *all);
 
 typedef void	(* t_type)(va_list, t_all *, char);
 t_type		get_type(char c);
+int		is_type(char c);
 
 void	printp(va_list arg, t_all *all, char c);
 void	printe(va_list arg, t_all *all, char c);

@@ -6,7 +6,7 @@
 /*   By: adu-pelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/11 14:11:37 by adu-pelo          #+#    #+#             */
-/*   Updated: 2016/10/11 16:38:51 by adu-pelo         ###   ########.fr       */
+/*   Updated: 2016/10/13 18:30:37 by adu-pelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,33 @@ static int  ft_nwstrlen(wchar_t *str, int len)
 	int i;
 
 	i = 0;
-	while (*str && len > 0)
+	while (*str && (len > 0))
 	{
 		if (*str < (1 << 7))
+		{
 			i += 1;
+			len -= 1;
+		}
 		else if (*str < (1 << 11))
+		{
 			i += 2;
+			len -= 2;
+		}
 		else if (*str < (1 << 16))
+		{
 			i += 3;
+			len -= 3;
+		}
 		else if (*str < (1 << 21))
+		{
 			i += 4;
+			len -= 4;
+		}
 		str++;
-		len--;
+		if (i > len)
+			len--;
 	}
+//	printf("ret = %d\n", i);
 	return (i);
 }
 
@@ -98,10 +112,7 @@ void		printc(va_list arg, t_all *all, char c)
 
 	if (all->length == LONG_INT)
 		return (printwc(arg, all, c));
-	s = ((c == '%') ? '%' : va_arg(arg, int));
-	//s = va_arg(arg, int);
-	//if (c == '%')
-	//	return (ftp_putchar(all, '%')); // refaire tests
+	s = ((is_type(c) == 0) ? c : va_arg(arg, int));
 	if (!all->right_pad && all->widthed && (all->width > 1)) // si pas de padding a droite et que width va modifier le champ
 		pad_width(all, 1, (all->zero_pad) ? '0' : ' ');
 	ftp_putchar(all, s);
@@ -132,10 +143,14 @@ void    printws(va_list arg, t_all *all, char c)
 	(void)c;
 	if (!(s = va_arg(arg, wchar_t *)))
 		s = ((all->precised == 0) ? L"(null)" : L"");
+//	printf("prec = %d\n", all->precision);
 	len = ((all->precised) ? ft_nwstrlen(s, all->precision) : ft_wstrlen(s));
+//	printf("len = %zu\n", len);
+	//printf("cnt = %d\n", all->cnt);
 	if (!all->right_pad && all->widthed && (all->width > len)) // si pas de padding a droite et que width va modifier le champ
 		pad_width(all, len, (all->zero_pad) ? '0' : ' ');
 	ftp_putnwstr(all, s, len);
 	if (all->right_pad && all->widthed && (all->width > len)) // si padding a droite et que width va modifier le champ
 		pad_width(all, len, (all->zero_pad) ? '0' : ' ');
+	//printf("cnt = %d\n", all->cnt);
 }

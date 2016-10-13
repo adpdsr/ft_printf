@@ -6,64 +6,11 @@
 /*   By: adu-pelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 13:56:55 by adu-pelo          #+#    #+#             */
-/*   Updated: 2016/10/11 20:27:06 by adu-pelo         ###   ########.fr       */
+/*   Updated: 2016/10/13 18:37:26 by adu-pelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-/*
-static int	print_pad_left(t_all *all, int len)
-{
-	if (!all->right_pad && all->width)
-	{
-		while (all->width-- > len)
-			ftp_putchar(all, ' ');
-		return (1);
-	}
-	return (0);
-}
-
-static int	print_pad_right(t_all *all, int len)
-{
-	if (all->width)
-	{
-		while (all->width-- > len)
-			ftp_putchar(all, ' ');
-		return (1);
-	}
-	return(0);
-}
-
-static void	print_fpad_right(t_all *all, int len)
-{
-	if (all->width)
-	{
-		while (all->width-- > len)
-			ftp_putchar(all, ' ');
-	}
-}
-
-static void	print_zero_left(t_all *all, int precision, int i)
-{
-	while (i++ < precision)
-		ftp_putchar(all, '0');
-}
-
-static int	pad_left(t_all *all, int len)
-{
-	if (all->precision && len < all->precision)
-	{
-		print_zero_left(all, all->precision, len);
-		return (1);
-	}
-	else if (all->zero_pad && all->width && len < all->width)
-	{
-		print_zero_left(all, all->width, len);
-		return (1);
-	}
-	print_pad_left(all, len);
-	return (0);
-}*/
 
 intmax_t	cast_signed_int(va_list arg, t_all *all)
 {
@@ -112,12 +59,12 @@ uintmax_t cast_unsigned_int(va_list arg, t_all *all)
 void	printe(va_list arg, t_all *all, char c)
 {
 	(void)c;
-	return ((void)printc(arg, all, '%'));
+	return ((void)printc(arg, all, c));
 }
 
 static int		parse(va_list arg, char *format)
 {
-	int 	ret;
+	int 	ret; // a virer
 	t_all	all;
 	t_type 	tab;
 
@@ -127,6 +74,8 @@ static int		parse(va_list arg, char *format)
 		all.cnt = 0;
 		if (*format == '%')
 		{
+			if (!(*(format + 1)))
+				return (0);
 			format++;
 			ft_bzero(&all, sizeof(t_all));
 			format = get_flag(&format, &all);

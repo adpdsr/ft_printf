@@ -11,6 +11,7 @@ SRC	= ft_bzero.c \
 	  ft_printc.c \
 	  ft_printf.c \
 	  ft_printwc.c \
+	  ft_strchr.c \
 	  ft_putchar.c \
 	  ft_putnnbr.c \
 	  ft_nbrlen_base.c \
@@ -54,7 +55,7 @@ clean:
 	rm -rf $(OBJS) $(DIR_OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -rf $(NAME)
 
 re: fclean all
 

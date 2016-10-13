@@ -1,0 +1,92 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+CHAR	includes/ft_printf.h	/^#define CHAR /;"	d
+DIR_INC	Makefile	/^DIR_INC	= .\/includes\/$/;"	m
+DIR_OBJ	Makefile	/^DIR_OBJ	= .\/objects\/$/;"	m
+DIR_SRC	Makefile	/^DIR_SRC	= .\/sources\/$/;"	m
+FT_PRINTF_H	includes/ft_printf.h	/^#define FT_PRINTF_H$/;"	d
+IFLAGS	Makefile	/^IFLAGS	= -I \/includes\/$/;"	m
+INCS	Makefile	/^INCS	= $(addprefix $(DIR_INC), $(INC))$/;"	m
+INTMAXT	includes/ft_printf.h	/^#define INTMAXT /;"	d
+LONG_INT	includes/ft_printf.h	/^#define LONG_INT /;"	d
+LONG_LONG_INT	includes/ft_printf.h	/^#define LONG_LONG_INT /;"	d
+NAME	Makefile	/^NAME	= libftprintf.a$/;"	m
+OBJ	Makefile	/^OBJ	= $(SRC:.c=.o)$/;"	m
+OBJS	Makefile	/^OBJS	= $(addprefix $(DIR_OBJ), $(OBJ))$/;"	m
+SHORT_INT	includes/ft_printf.h	/^#define SHORT_INT /;"	d
+SIZET	includes/ft_printf.h	/^#define SIZET /;"	d
+SRC	Makefile	/^SRC	= ft_bzero.c \\$/;"	m
+SRCS	Makefile	/^SRCS	= $(addprefix $(DIR_SRC), $(SRC))$/;"	m
+WFLAGS	Makefile	/^WFLAGS	= -Wall -Werror -Wextra$/;"	m
+always_sign	includes/ft_printf.h	/^	unsigned int	always_sign;	\/\/ bool$/;"	m	struct:s_all
+blank_sign	includes/ft_printf.h	/^	unsigned int	blank_sign;	\/\/ bool$/;"	m	struct:s_all
+cast_signed_int	sources/ft_printf.c	/^intmax_t	cast_signed_int(va_list arg, t_all *all)$/;"	f
+cast_unsigned_int	sources/ft_printf.c	/^uintmax_t cast_unsigned_int(va_list arg, t_all *all)$/;"	f
+cnt	includes/ft_printf.h	/^	unsigned int	cnt;$/;"	m	struct:s_all
+ft_bzero	sources/ft_bzero.c	/^void	ft_bzero(void *str, size_t n)$/;"	f
+ft_isdigit	sources/ft_isdigit.c	/^int		ft_isdigit(int c)$/;"	f
+ft_memalloc	sources/ft_memalloc.c	/^void		*ft_memalloc(size_t size)$/;"	f
+ft_memset	sources/ft_memset.c	/^void				*ft_memset(void *b, int c, size_t len)$/;"	f
+ft_nbrlen_base	sources/ft_nbrlen_base.c	/^int		ft_nbrlen_base(uintmax_t n, char *base)$/;"	f
+ft_nstrlen	sources/ftp_prints.c	/^static size_t	ft_nstrlen(char *s, unsigned int n)$/;"	f	file:
+ft_nwstrlen	sources/ftp_prints.c	/^static int  ft_nwstrlen(wchar_t *str, int len)$/;"	f	file:
+ft_printf	sources/ft_printf.c	/^int		ft_printf(const char *format, ...)$/;"	f
+ft_putchar	sources/ft_putchar.c	/^void	ft_putchar(char c)$/;"	f
+ft_putnnbr	sources/ft_putnnbr.c	/^void	ft_putnnbr(uintmax_t n, int len)$/;"	f
+ft_putnnbr_2	sources/ft_putnnbr.c	/^static void	ft_putnnbr_2(uintmax_t nb, int len, int ref)$/;"	f	file:
+ft_putnnbr_base	sources/ft_putnnbr_base.c	/^void	ft_putnnbr_base(uintmax_t n, int len, unsigned int base, int flag)$/;"	f
+ft_putnnbr_base_2	sources/ft_putnnbr_base.c	/^static void	ft_putnnbr_base_2(uintmax_t nb, int len, unsigned int base, int flag, int ref)$/;"	f	file:
+ft_putstr	sources/ft_putstr.c	/^void	ft_putstr(char const *s)$/;"	f
+ft_strchr	sources/ft_strchr.c	/^char		*ft_strchr(const char *str, int c)$/;"	f
+ft_strlen	sources/ft_strlen.c	/^size_t		ft_strlen(const char *str)$/;"	f
+ft_strnstr	sources/ft_strnstr.c	/^char			*ft_strnstr(const char *s1, const char *s2, size_t n)$/;"	f
+ft_wstrlen	sources/ftp_prints.c	/^static int  ft_wstrlen(wchar_t *str)$/;"	f	file:
+ftp_putchar	sources/ft_printc.c	/^void	ftp_putchar(t_all *all, char c)$/;"	f
+ftp_putnchar	sources/ftp_printx.c	/^static void	ftp_putnchar(t_all *all, char c, int n)$/;"	f	file:
+ftp_putnstr	sources/ft_printc.c	/^void	ftp_putnstr(t_all *all, char *s, int len)$/;"	f
+ftp_putnwstr	sources/ft_printwc.c	/^void	ftp_putnwstr(t_all *all, wchar_t *s, int len)$/;"	f
+ftp_putstr	sources/ft_printc.c	/^void	ftp_putstr(t_all *all, char *s)$/;"	f
+ftp_putwchar	sources/ft_printwc.c	/^void	ftp_putwchar(t_all *all, wchar_t c)$/;"	f
+ftp_putwstr	sources/ft_printwc.c	/^void	ftp_putwstr(t_all *all, wchar_t *s)$/;"	f
+get_flag	sources/get_flag.c	/^char		*get_flag(char **format, t_all *all)$/;"	f
+get_length	sources/get_length.c	/^char		*get_length(char **format, t_all *all)$/;"	f
+get_precision	sources/get_precision.c	/^char	*get_precision(char **format, t_all *all)$/;"	f
+get_prefix	sources/ftp_printx.c	/^static char	*get_prefix(t_all *all, char c)$/;"	f	file:
+get_signed_prefix	sources/ftp_printx.c	/^static char	*get_signed_prefix(t_all *all, intmax_t nbr)$/;"	f	file:
+get_type	sources/get_type.c	/^t_type		get_type(char c)$/;"	f
+get_width	sources/get_width.c	/^char	*get_width(char **format, t_all *all)$/;"	f
+init_ptr_types	sources/get_type.c	/^static void	init_ptr_types(t_type *type)$/;"	f	file:
+is_flag	sources/get_flag.c	/^static int	is_flag(char c)$/;"	f	file:
+is_length	sources/get_length.c	/^static int	is_length(char c)$/;"	f	file:
+is_type	sources/get_type.c	/^int			is_type(char c)$/;"	f
+length	includes/ft_printf.h	/^	unsigned int	length;$/;"	m	struct:s_all
+main	main.c	/^int			main(void)$/;"	f
+pad_precision	sources/ftp_printx.c	/^static void	pad_precision(t_all *all, unsigned int len)$/;"	f	file:
+pad_width	sources/ftp_prints.c	/^void	pad_width(t_all *all, unsigned int len, char c)$/;"	f
+pad_width2	sources/ftp_printx.c	/^static void	pad_width2(t_all *all, char *prefix, unsigned int len, char c)$/;"	f	file:
+parse	sources/ft_printf.c	/^static int		parse(va_list arg, char *format)$/;"	f	file:
+precised	includes/ft_printf.h	/^	unsigned int	precised;	\/\/ bool$/;"	m	struct:s_all
+precision	includes/ft_printf.h	/^	unsigned int	precision;$/;"	m	struct:s_all
+prefix	includes/ft_printf.h	/^	unsigned int	prefix;		\/\/ bool$/;"	m	struct:s_all
+printc	sources/ftp_prints.c	/^void		printc(va_list arg, t_all *all, char c)$/;"	f
+printe	sources/ft_printf.c	/^void	printe(va_list arg, t_all *all, char c)$/;"	f
+printi	sources/ftp_printx.c	/^void	printi(va_list arg, t_all *all, char c)$/;"	f
+printo	sources/ftp_printx.c	/^void		printo(va_list arg, t_all *all, char c)$/;"	f
+printp	sources/ftp_printx.c	/^void	printp(va_list arg, t_all *all, char c)$/;"	f
+prints	sources/ftp_prints.c	/^void		prints(va_list arg, t_all *all, char c)$/;"	f
+printu	sources/ftp_printx.c	/^void	printu(va_list arg, t_all *all, char c)$/;"	f
+printwc	sources/ftp_prints.c	/^void		printwc(va_list arg, t_all *all, char c)$/;"	f
+printws	sources/ftp_prints.c	/^void    printws(va_list arg, t_all *all, char c)$/;"	f
+printx	sources/ftp_printx.c	/^void		printx(va_list arg, t_all *all, char c)$/;"	f
+put_prefix	sources/ftp_printx.c	/^static void	put_prefix(t_all *all, char *prefix, int len, int flag)$/;"	f	file:
+right_pad	includes/ft_printf.h	/^	unsigned int	right_pad;	\/\/ bool$/;"	m	struct:s_all
+s_all	includes/ft_printf.h	/^typedef struct	s_all$/;"	s
+t_all	includes/ft_printf.h	/^}		t_all;$/;"	t	typeref:struct:s_all
+t_type	includes/ft_printf.h	/^typedef void	(* t_type)(va_list, t_all *, char);$/;"	t
+width	includes/ft_printf.h	/^	unsigned int	width;$/;"	m	struct:s_all
+widthed	includes/ft_printf.h	/^	unsigned int	widthed;	\/\/ bool$/;"	m	struct:s_all
+zero_pad	includes/ft_printf.h	/^	unsigned int	zero_pad;	\/\/ bool$/;"	m	struct:s_all
