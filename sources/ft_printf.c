@@ -6,7 +6,7 @@
 /*   By: adu-pelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/18 15:48:56 by adu-pelo          #+#    #+#             */
-/*   Updated: 2016/10/18 18:06:04 by adu-pelo         ###   ########.fr       */
+/*   Updated: 2016/10/18 18:30:43 by adu-pelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,7 @@ static int	parse(va_list arg, char *format)
 		if (*format == '%')
 		{
 			if (!(*(format + 1)))
-			{
 				return (0);
-			}
 			format++;
 			ft_bzero(&all, sizeof(t_all));
 			parse_format(&format, &all);

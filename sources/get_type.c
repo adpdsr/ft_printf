@@ -6,7 +6,7 @@
 /*   By: adu-pelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/11 20:38:36 by adu-pelo          #+#    #+#             */
-/*   Updated: 2016/10/18 18:02:14 by adu-pelo         ###   ########.fr       */
+/*   Updated: 2016/10/18 18:27:02 by adu-pelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,19 @@ int			is_type(char c)
 
 t_type		get_type(char c)
 {
-	t_type			*type;
+	t_type	*types;
+	t_type	type;
 
-	type = ft_memalloc(sizeof(t_type) * 256);
-	if (type)
-		init_ptr_types(type);
+	types = ft_memalloc(sizeof(t_type) * 256);
+	if (types)
+		init_ptr_types(types);
 	if (!is_type(c))
-		return (type['c']);
-	return (type[(int)c]);
+	{
+		type = types['c'];
+		free(types);
+		return (type);
+	}
+	type = types[(int)c];
+	free(types);
+	return (type);
 }
