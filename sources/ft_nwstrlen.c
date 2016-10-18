@@ -1,31 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnnbr.c                                       :+:      :+:    :+:   */
+/*   ft_nwstrlen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/10 16:37:56 by adu-pelo          #+#    #+#             */
-/*   Updated: 2016/10/18 15:57:08 by adu-pelo         ###   ########.fr       */
+/*   Created: 2016/10/18 16:45:30 by adu-pelo          #+#    #+#             */
+/*   Updated: 2016/10/18 17:39:42 by adu-pelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static void	ft_putnnbr_2(uintmax_t nb, int len, int ref)
+static void	inc(int *a, int *b, int inc)
 {
-	if (ref == len)
-		return ;
-	if (nb >= 10)
-	{
-		ft_putnnbr_2(nb / 10, len, ref++);
-		ft_putchar((nb % 10) + '0');
-	}
-	else
-		ft_putchar(nb + '0');
+	*a += inc;
+	*b -= inc;
 }
 
-void		ft_putnnbr(uintmax_t n, int len)
+int			ft_nwstrlen(wchar_t *s, int n)
 {
-	ft_putnnbr_2(n, len, 0);
+	int i;
+
+	i = 0;
+	while (*s && (n > 0))
+	{
+		if (*s < (1 << 7))
+			inc(&i, &n, 1);
+		else if (*s < (1 << 11))
+			inc(&i, &n, 2);
+		else if (*s < (1 << 16))
+			inc(&i, &n, 3);
+		else if (*s < (1 << 21))
+			inc(&i, &n, 4);
+		s++;
+		if (i > n)
+			n--;
+	}
+	return (i);
 }

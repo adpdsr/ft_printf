@@ -1,39 +1,47 @@
-//
-// HEADER
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_length.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adu-pelo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/10/18 15:18:30 by adu-pelo          #+#    #+#             */
+/*   Updated: 2016/10/18 15:18:53 by adu-pelo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
 static int	is_length(char c)
 {
-		if (c == 'h' || c == 'l' || c == 'j' || c == 'z')
-				return (1);
-		return (0);
+	if (c == 'h' || c == 'l' || c == 'j' || c == 'z')
+		return (1);
+	return (0);
 }
 
 char		*get_length(char **format, t_all *all)
 {
-		if (is_length(**format))
+	if (is_length(**format))
+	{
+		if (ft_strnstr(*format, "hh", 2))
 		{
-				if (ft_strnstr(*format, "hh", 2))
-				{
-						all->length = CHAR;
-						(*format)++;
-				}
-				else if (ft_strnstr(*format, "ll", 2))
-				{
-						all->length = LONG_LONG_INT;
-						(*format)++;
-				}
-				else if (**format == 'h')
-						all->length = SHORT_INT;
-				else if (**format == 'l')
-						all->length = LONG_INT;
-				else if (**format == 'j')
-						all->length = INTMAXT;
-				else if (**format == 'z')
-						all->length = SIZET;
-				(*format)++;
+			all->length = CHAR;
+			(*format)++;
 		}
-		return (*format);
+		else if (ft_strnstr(*format, "ll", 2))
+		{
+			all->length = LONG_LONG_INT;
+			(*format)++;
+		}
+		else if (**format == 'h')
+			all->length = SHORT_INT;
+		else if (**format == 'l')
+			all->length = LONG_INT;
+		else if (**format == 'j')
+			all->length = INTMAXT;
+		else if (**format == 'z')
+			all->length = SIZET;
+		(*format)++;
+	}
+	return (*format);
 }

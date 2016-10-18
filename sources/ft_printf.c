@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/10 13:56:55 by adu-pelo          #+#    #+#             */
-/*   Updated: 2016/10/13 18:37:26 by adu-pelo         ###   ########.fr       */
+/*   Created: 2016/10/18 15:48:56 by adu-pelo          #+#    #+#             */
+/*   Updated: 2016/10/18 18:06:04 by adu-pelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ intmax_t	cast_signed_int(va_list arg, t_all *all)
 	return (nbr);
 }
 
-uintmax_t cast_unsigned_int(va_list arg, t_all *all)
+uintmax_t	cast_unsigned_int(va_list arg, t_all *all)
 {
 	uintmax_t nbr;
 
@@ -56,17 +56,19 @@ uintmax_t cast_unsigned_int(va_list arg, t_all *all)
 	return (nbr);
 }
 
-void	printe(va_list arg, t_all *all, char c)
+static void	parse_format(char **format, t_all *all)
 {
-	(void)c;
-	return ((void)printc(arg, all, c));
+	*format = get_flag(format, all);
+	*format = get_width(format, all);
+	*format = get_precision(format, all);
+	*format = get_length(format, all);
 }
 
-static int		parse(va_list arg, char *format)
+static int	parse(va_list arg, char *format)
 {
-	int 	ret; // a virer
+	int		ret;
 	t_all	all;
-	t_type 	tab;
+	t_type	tab;
 
 	ret = 0;
 	while (*format)
@@ -75,13 +77,12 @@ static int		parse(va_list arg, char *format)
 		if (*format == '%')
 		{
 			if (!(*(format + 1)))
+			{
 				return (0);
+			}
 			format++;
 			ft_bzero(&all, sizeof(t_all));
-			format = get_flag(&format, &all);
-			format = get_width(&format, &all);
-			format = get_precision(&format, &all);
-			format = get_length(&format, &all);
+			parse_format(&format, &all);
 			tab = get_type(*format);
 			tab(arg, &all, *format);
 		}
@@ -93,9 +94,9 @@ static int		parse(va_list arg, char *format)
 	return (ret);
 }
 
-int		ft_printf(const char *format, ...)
+int			ft_printf(const char *format, ...)
 {
-	int	ret;
+	int		ret;
 	va_list	arg;
 
 	va_start(arg, format);

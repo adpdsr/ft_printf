@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftp_printx.c                                       :+:      :+:    :+:   */
+/*   ftp_printo.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/10 16:44:38 by adu-pelo          #+#    #+#             */
-/*   Updated: 2016/10/18 17:05:44 by adu-pelo         ###   ########.fr       */
+/*   Created: 2016/10/18 16:58:42 by adu-pelo          #+#    #+#             */
+/*   Updated: 2016/10/18 16:59:02 by adu-pelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void		printx(va_list arg, t_all *all, char c)
+void		printo(va_list arg, t_all *all, char c)
 {
-	size_t			len;
-	uintmax_t		nbr;
-	unsigned int	maj;
+	size_t		len;
+	uintmax_t	nbr;
 
-	maj = (c == 'x') ? 0 : 1;
+	if (c == 'O')
+		all->length = LONG_INT;
 	nbr = cast_unsigned_int(arg, all);
-	len = ft_nbrlen_base(nbr, "0123456789abcdef");
-	if (nbr != 0 || all->widthed)
+	len = ft_nbrlen_base(nbr, "01234567");
+	if (!nbr && all->precised && !all->precision)
+		len = 0;
+	put_prefix(all, get_prefix(all, c), len, 0);
+	if ((!nbr && all->precised && !all->precision) || (!nbr && all->prefix))
+		(void)nbr;
+	else
 	{
-		if (nbr == 0 && all->precised && !all->precision)
-			len -= 1;
-		put_prefix(all, get_prefix(all, c), len, 1);
-	}
-	if ((all->precised && all->precision) || (!all->precised))
-	{
-		ft_putnnbr_base(nbr, len, 16, maj);
+		ft_putnnbr_base(nbr, len, 8, 0);
 		all->cnt += len;
 	}
 	if (all->right_pad)
-		pad_width2(all, get_prefix(all, c), len, ' ');
+	{
+		if (all->prefix)
+			len += 1;
+		pad_width2(all, "", len, ' ');
+	}
 }

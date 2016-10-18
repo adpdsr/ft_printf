@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnnbr.c                                       :+:      :+:    :+:   */
+/*   padding.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/10 16:37:56 by adu-pelo          #+#    #+#             */
-/*   Updated: 2016/10/18 15:57:08 by adu-pelo         ###   ########.fr       */
+/*   Created: 2016/10/18 17:04:26 by adu-pelo          #+#    #+#             */
+/*   Updated: 2016/10/18 17:07:52 by adu-pelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static void	ft_putnnbr_2(uintmax_t nb, int len, int ref)
+void	pad_width2(t_all *all, char *prefix, unsigned int len, char c)
 {
-	if (ref == len)
-		return ;
-	if (nb >= 10)
-	{
-		ft_putnnbr_2(nb / 10, len, ref++);
-		ft_putchar((nb % 10) + '0');
-	}
+	all->width -= ft_strlen(prefix);
+	if (all->precision > len)
+		all->width -= all->precision;
 	else
-		ft_putchar(nb + '0');
+		all->width -= len;
+	ftp_putnchar(all, c, all->width);
 }
 
-void		ft_putnnbr(uintmax_t n, int len)
+void	pad_precision(t_all *all, unsigned int len)
 {
-	ft_putnnbr_2(n, len, 0);
+	if (all->precision > len)
+		ftp_putnchar(all, '0', all->precision - len);
 }

@@ -6,7 +6,7 @@
 /*   By: adu-pelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/11 20:38:36 by adu-pelo          #+#    #+#             */
-/*   Updated: 2016/10/13 14:14:36 by adu-pelo         ###   ########.fr       */
+/*   Updated: 2016/10/18 18:02:14 by adu-pelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ t_type		get_type(char c)
 	if (type)
 		init_ptr_types(type);
 	if (!is_type(c))
-			return (type['c']);
+		return (type['c']);
 	return (type[(int)c]);
-	// free type
 }
