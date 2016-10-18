@@ -41,10 +41,10 @@ Available options :
 
 . hh (The following integer conversion corresponds to a signed char or unsigned char argument)  
 . ll (The following integer conversion corresponds to a long long int or unsigned long long int argument)  
-. h  (A following integer conversion corresponds to a short int or unsigned short int argument)  
-. l  (A following integer conversion corresponds to a long int or unsigned long int argument)  
-. j  (A following integer conversion corresponds to an intmax_t or uintmax_t argument)  
-. z  (A following integer conversion corresponds to a size_t or ssize_t argument)  
+. h&nbsp; (A following integer conversion corresponds to a short int or unsigned short int argument)  
+. l&nbsp; (A following integer conversion corresponds to a long int or unsigned long int argument)  
+. j&nbsp; (A following integer conversion corresponds to an intmax_t or uintmax_t argument)  
+. z&nbsp; (A following integer conversion corresponds to a size_t or ssize_t argument)  
   
 ## Installation  
   
