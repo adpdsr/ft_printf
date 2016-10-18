@@ -1,29 +1,29 @@
 #ft_printf
-
+<br/>
 42 school project (Paris, France).
-
+<br/>
 ## Synopsis
-
+<br/>
 My own printf function.
-
+<br/>
 Available options :
-
--> width     : An optional decimal digit string (with nonzero first digit) specifying a minimum field width.
--> precision : Give the minimun number of digits/character to appear.
-
+<br/>
+-> width     : An optional decimal digit string (with nonzero first digit) specifying a minimum field width.<br/>
+-> precision : Give the minimun number of digits/character to appear.<br/>
+<br/>
 -> Flags :
-
-. '#' (Add a prefix to the converted value, depending on format type).
-. '-' (The converted value is to be left adjusted on the field boundary).
-. ' ' (A sign must always be placed before a number produced by a signed conversion).
-. '+' (A blank should be left before a positive number produced by a signed conversion).
-. '0' (For all conversions except n, the converted value is padded on the left with zeros rather than blanks).
-
--> Formats :
-
-. %% (A `%' is written, no argument is converted).
-. %s (The char * argument is expected to be a pointer to an array of character type (pointer to a string)).
-. %S (Treated as s with the l (ell) modifier, see below).
+<br/>
+. '#' (Add a prefix to the converted value, depending on format type).<br/>
+. '-' (The converted value is to be left adjusted on the field boundary).  
+. ' ' (A sign must always be placed before a number produced by a signed conversion).<br/>
+. '+' (A blank should be left before a positive number produced by a signed conversion).<br/>
+. '0' (For all conversions except n, the converted value is padded on the left with zeros rather than blanks).<br/>
+<br/>
+-> Formats :<br/>
+<br/>
+. %% (A `%' is written, no argument is converted).<br/>
+. %s (The char * argument is expected to be a pointer to an array of character type (pointer to a string)).<br/>
+. %S (Treated as s with the l (ell) modifier, see below).<br/>
 . %c (The int argument is converted to an unsigned char, and the resulting character is written).
 . %C (Treated as c with the l (ell) modifier, see below).
 . %i (The int argument is converted to signed decimal notation).
