@@ -1,15 +1,15 @@
 #ft_printf
-<br/>
+  
 42 school project (Paris, France).
-<br/>
+  
 ## Synopsis
-<br/>
+  
 My own printf function.
-<br/>
+  
 Available options :
-<br/>
--> width     : An optional decimal digit string (with nonzero first digit) specifying a minimum field width.<br/>
--> precision : Give the minimun number of digits/character to appear.<br/>
+  
+-> width		: An optional decimal digit string (with nonzero first digit) specifying a minimum field width.<br/>
+-> precision	: Give the minimun number of digits/character to appear.<br/>
 <br/>
 -> Flags :
 <br/>
