@@ -8,7 +8,7 @@ My own printf function.
   
 Available options :
   
--> width&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: An optional decimal digit string (with nonzero first digit) specifying a minimum field width.  
+-> width&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: An optional decimal digit string (with nonzero first digit) specifying a minimum field width.  
 -> precision&nbsp;: Give the minimun number of digits/character to appear.  
 
 -> Flags :  
