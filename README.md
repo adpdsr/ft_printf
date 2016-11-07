@@ -45,9 +45,3 @@ Available options :
 . l&nbsp; (A following integer conversion corresponds to a long int or unsigned long int argument)  
 . j&nbsp; (A following integer conversion corresponds to an intmax_t or uintmax_t argument)  
 . z&nbsp; (A following integer conversion corresponds to a size_t or ssize_t argument)  
-  
-## Installation  
-  
-. type 'Make' in the root directory of the project  
-. compile the created library with your program : 'cc libftprintf.a exemple.c'  
-. run the created binary : './a.out'  
