@@ -4,7 +4,7 @@
   
 ## Synopsis
   
-My own printf function ([man 3 printf] (www.manpages.info/linux/printf.3.html))
+My own printf function (cf. [man 3 printf] (www.manpages.info/linux/printf.3.html))
   
 ###Available options :
   
@@ -14,11 +14,11 @@ My own printf function ([man 3 printf] (www.manpages.info/linux/printf.3.html))
 
 ####Flags :
 
-* #  
-* -  
-* +
-* 0
-* ' ' (space)
+* '#'
+* '-'
+* '+'
+* '0'
+* ' '
   
 ####Formats :  
   
