@@ -1,19 +1,19 @@
 #ft_printf
   
-42 school project (Paris, France)
+Projet Ecole 42 (Paris)
   
 ## Synopsis
   
-My own printf function (cf. [man 3 printf] (www.manpages.info/linux/printf.3.html))
+Ma propre fonction printf (cf. [man 3 printf](www.manpages.info/linux/printf.3.html))
   
 ###Available options :
   
-####Width
-
 ####Precision
-
+ 
+####Width
+  
 ####Flags :
-
+  
 * '#'
 * '-'
 * '+'
@@ -25,24 +25,24 @@ My own printf function (cf. [man 3 printf] (www.manpages.info/linux/printf.3.htm
 * %
 * s
 * S
-* c 
+* c
 * C
-* i 
+* i
 * d
 * D
-* x  
+* x
 * X
 * p
 * o
 * O
 * u
 * U
-
+  
 ####Length modifiers :
-
+  
 * hh
-* ll 
-* h 
-* l 
-* j 
+* ll
+* h
+* l
+* j
 * z
