@@ -1,4 +1,4 @@
-#ft_printf
+# ft_printf
   
 Projet Ecole 42 (Paris)
   
@@ -6,13 +6,13 @@ Projet Ecole 42 (Paris)
   
 Ma propre fonction printf (cf. [man 3 printf](www.manpages.info/linux/printf.3.html))
   
-###Options implémentées :
+### Options implémentées :
   
-####Largeur minimum
+#### Largeur minimum
   
-####Précision
+#### Précision
   
-####Flags :
+#### Flags :
   
 * '#'
 * '-'
@@ -20,7 +20,7 @@ Ma propre fonction printf (cf. [man 3 printf](www.manpages.info/linux/printf.3.h
 * '0'
 * ' '
   
-####Formats :  
+#### Formats :  
   
 * %
 * s
@@ -38,7 +38,7 @@ Ma propre fonction printf (cf. [man 3 printf](www.manpages.info/linux/printf.3.h
 * u
 * U
   
-####Modificateurs de longueur :
+#### Modificateurs de longueur :
   
 * hh
 * ll
